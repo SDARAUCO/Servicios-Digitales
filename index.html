@@ -1,33 +1,76 @@
-<script>
-window.onload = function() {
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    const correo = "sd_carauco@duoc.cl";
+<title>Servicios Digitales - Campus Arauco</title>
 
-    const esIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    text-align: center;
+    padding: 40px;
+}
 
-    if (esIOS) {
+.card {
+    background: white;
+    max-width: 400px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 3px 10px #aaa;
+}
 
-        // Abrir Gmail App en iPhone
-        window.location.href =
-        "googlegmail://co?to=" + correo;
+h1 {
+    color: #005a9c;
+}
 
-        // Respaldo Gmail Web
-        setTimeout(function(){
+p {
+    font-size: 18px;
+}
 
-            window.location.href =
-            "https://mail.google.com/mail/?view=cm&fs=1&to="
-            + correo;
+.boton {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 15px 25px;
+    background: #005a9c;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 18px;
+}
 
-        },1500);
+.boton:hover {
+    background: #003f6b;
+}
 
-    } else {
+</style>
 
-        // Android y PC
-        window.location.href =
-        "https://mail.google.com/mail/?view=cm&fs=1&to="
-        + correo;
+</head>
 
-    }
+<body>
 
-};
-</script>
+<div class="card">
+
+<h1>Servicios Digitales</h1>
+
+<h2>Campus Arauco</h2>
+
+<p>
+Para solicitar soporte o realizar consultas,
+presiona el botón:
+</p>
+
+
+<a class="boton" 
+href="mailto:sd_carauco@duoc.cl">
+✉️ Enviar correo
+</a>
+
+
+</div>
+
+</body>
+</html>
