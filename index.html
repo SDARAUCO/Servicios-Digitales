@@ -1,87 +1,56 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Servicio Digitales - Campus Arauco</title>
-
-<style>
-
-body{
-font-family:Arial;
-background:#f2f4f7;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-
-.card{
-
-background:white;
-padding:40px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 10px 30px #ccc;
-
-}
-
-
-h1{
-
-color:#006341;
-
-}
-
-
-button{
-
-background:#006341;
-color:white;
-border:0;
-padding:15px;
-border-radius:10px;
-font-size:18px;
-
-}
-
-</style>
-
-</head>
-
-
-<body>
-
-
-<div class="card">
-
-<h1>
-Servicio Digitales
-</h1>
-
-
-<h3>
-Campus Arauco
-</h3>
-
-
-<p>
-Página funcionando correctamente
-</p>
-
-
-<button>
+<button onclick="abrirGmail()">
 Abrir Gmail
 </button>
 
 
-</div>
+<script>
+
+function abrirGmail(){
+
+const correo="sd_carauco@duoc.cl";
+
+let ua = navigator.userAgent.toLowerCase();
 
 
-</body>
+// iPhone
 
-</html>
+if(ua.includes("iphone") || ua.includes("ipad")){
+
+    window.location.href =
+    "googlegmail://co?to=" + correo;
+
+    return;
+
+}
+
+
+// Android
+
+if(ua.includes("android")){
+
+    window.location.href =
+    "googlegmail://co?to=" + correo;
+
+
+    setTimeout(function(){
+
+        window.location.href =
+        "https://mail.google.com/mail/?view=cm&fs=1&to=" + correo;
+
+    },1500);
+
+
+    return;
+
+}
+
+
+// PC
+
+window.location.href =
+"https://mail.google.com/mail/?view=cm&fs=1&to=" + correo;
+
+
+}
+
+</script>
