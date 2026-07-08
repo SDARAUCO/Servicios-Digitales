@@ -1,117 +1,55 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Servicio Digitales - Campus Arauco</title>
 
-
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-
 body{
-
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f2f4f7;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-
+font-family:Arial;
+background:#f2f4f7;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 
 .card{
 
-    width:360px;
-    background:white;
-    border-radius:18px;
-    padding:35px;
-    text-align:center;
-    box-shadow:0 10px 35px rgba(0,0,0,.15);
+background:white;
+padding:40px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 30px #ccc;
 
 }
 
 
-.logo{
+h1{
 
-    font-size:28px;
-    font-weight:bold;
-    color:#006341;
-    margin-bottom:10px;
-
-}
-
-
-.sub{
-
-    color:#555;
-    margin-bottom:25px;
-
-}
-
-
-.icon{
-
-    font-size:50px;
-    margin-bottom:20px;
-
-}
-
-
-p{
-
-    color:#666;
-    line-height:1.5;
+color:#006341;
 
 }
 
 
 button{
 
-    margin-top:30px;
-    padding:16px;
-    width:100%;
-    font-size:18px;
-    font-weight:bold;
-    border:none;
-    border-radius:10px;
-    background:#006341;
-    color:white;
-    cursor:pointer;
+background:#006341;
+color:white;
+border:0;
+padding:15px;
+border-radius:10px;
+font-size:18px;
 
 }
-
-
-button:hover{
-
-    background:#004f33;
-
-}
-
-
-small{
-
-    display:block;
-    margin-top:20px;
-    color:#777;
-
-}
-
 
 </style>
-
 
 </head>
 
@@ -121,183 +59,27 @@ small{
 
 <div class="card">
 
-
-<div class="logo">
+<h1>
 Servicio Digitales
-</div>
+</h1>
 
 
-<div class="sub">
+<h3>
 Campus Arauco
-</div>
+</h3>
 
 
-<div class="icon">
-📧
-</div>
-
-
-<p id="mensaje">
-
-Seleccione una opción para abrir Gmail
-
+<p>
+Página funcionando correctamente
 </p>
 
 
-<button id="botonGmail">
-
+<button>
 Abrir Gmail
-
 </button>
 
 
-<small>
-
-Correo destino:<br>
-
-sd_carauco@duoc.cl
-
-</small>
-
-
 </div>
-
-
-
-<script>
-
-
-const correo="sd_carauco@duoc.cl";
-
-
-const boton=document.getElementById("botonGmail");
-
-const mensaje=document.getElementById("mensaje");
-
-
-
-let dispositivo="";
-
-
-
-let ua=navigator.userAgent.toLowerCase();
-
-
-
-if(ua.includes("iphone") || ua.includes("ipad")){
-
-
-    dispositivo="iphone";
-
-
-    mensaje.innerHTML=
-    "🍎 Detectamos iPhone<br><br>Presione el botón para abrir Gmail";
-
-
-    boton.innerHTML=
-    "Abrir Gmail en iPhone";
-
-
-}
-
-
-
-else if(ua.includes("android")){
-
-
-    dispositivo="android";
-
-
-    mensaje.innerHTML=
-    "📱 Detectamos Android<br><br>Presione el botón para abrir Gmail";
-
-
-    boton.innerHTML=
-    "Abrir Gmail en Android";
-
-
-}
-
-
-
-else{
-
-
-    dispositivo="pc";
-
-
-    mensaje.innerHTML=
-    "💻 Abra Gmail desde el navegador";
-
-
-    boton.innerHTML=
-    "Abrir Gmail Web";
-
-
-}
-
-
-
-
-boton.onclick=function(){
-
-
-
-// iPhone
-
-if(dispositivo==="iphone"){
-
-
-    window.location.href=
-    "googlegmail://co?to="+correo;
-
-
-}
-
-
-
-// Android
-
-else if(dispositivo==="android"){
-
-
-    window.location.href=
-    "googlegmail://co?to="+correo;
-
-
-    setTimeout(function(){
-
-
-        window.location.href=
-        "https://mail.google.com/mail/?view=cm&fs=1&to="+correo;
-
-
-    },2000);
-
-
-
-}
-
-
-
-// PC
-
-else{
-
-
-    window.location.href=
-    "https://mail.google.com/mail/?view=cm&fs=1&to="+correo;
-
-
-}
-
-
-
-};
-
-
-
-</script>
 
 
 </body>
