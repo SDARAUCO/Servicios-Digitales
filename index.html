@@ -59,18 +59,15 @@ let boton=document.getElementById("botonGmail");
 
 if(ua.includes("iphone") || ua.includes("ipad")){
 
-
-    mensaje.innerHTML="🍎 Detectamos iPhone<br><br>Presione para abrir Gmail";
+    mensaje.innerHTML="🍎 Detectamos iPhone<br><br>Presione el botón para abrir Gmail";
 
     boton.innerHTML="Abrir aplicación Gmail";
-
 
     boton.onclick=function(){
 
         abrirGmailIOS();
 
     };
-
 
 }
 
