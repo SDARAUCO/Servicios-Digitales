@@ -1,76 +1,277 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Servicios Digitales - Campus Arauco</title>
+<title>Servicio Digitales - Campus Arauco</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
-    text-align: center;
-    padding: 40px;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-.card {
-    background: white;
-    max-width: 400px;
-    margin: auto;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0px 3px 10px #aaa;
+body{
+
+font-family:Arial,Helvetica,sans-serif;
+background:#f2f4f7;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+
 }
 
-h1 {
-    color: #005a9c;
+
+.card{
+
+width:360px;
+background:white;
+border-radius:18px;
+padding:35px;
+text-align:center;
+box-shadow:0 10px 35px rgba(0,0,0,.15);
+
 }
 
-p {
-    font-size: 18px;
+
+.logo{
+
+font-size:28px;
+font-weight:bold;
+color:#006341;
+margin-bottom:10px;
+
 }
 
-.boton {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 15px 25px;
-    background: #005a9c;
-    color: white;
-    text-decoration: none;
-    border-radius: 10px;
-    font-size: 18px;
+
+.sub{
+
+color:#555;
+margin-bottom:25px;
+
 }
 
-.boton:hover {
-    background: #003f6b;
+
+.icon{
+
+font-size:50px;
+margin-bottom:20px;
+
 }
+
+
+p{
+
+color:#666;
+line-height:1.5;
+
+}
+
+
+button{
+
+margin-top:25px;
+padding:16px;
+width:100%;
+font-size:18px;
+font-weight:bold;
+border:none;
+border-radius:10px;
+background:#006341;
+color:white;
+cursor:pointer;
+
+}
+
+
+button:hover{
+
+background:#004f33;
+
+}
+
+
+small{
+
+display:block;
+margin-top:20px;
+color:#777;
+
+}
+
+
+.hidden{
+
+display:none;
+
+}
+
 
 </style>
 
+
 </head>
+
 
 <body>
 
+
 <div class="card">
 
-<h1>Servicios Digitales</h1>
 
-<h2>Campus Arauco</h2>
+<div class="logo">
+Servicio Digitales
+</div>
 
-<p>
-Para solicitar soporte o realizar consultas,
-presiona el botón:
+
+<div class="sub">
+Campus Arauco
+</div>
+
+
+<div class="icon">
+📧
+</div>
+
+
+<p id="mensaje">
+
+Seleccione una opción para abrir Gmail
+
 </p>
 
 
-<a class="boton" 
-href="mailto:sd_carauco@duoc.cl">
-✉️ Enviar correo
-</a>
+<button id="botonGmail" onclick="abrirGmail()">
+
+Abrir Gmail
+
+</button>
+
+
+<small>
+
+Correo destino:<br>
+sd_carauco@duoc.cl
+
+</small>
 
 
 </div>
 
+
+
+<script>
+
+
+const correo="sd_carauco@duoc.cl";
+
+
+// Abrir aplicación Gmail
+
+function abrirGmail(){
+
+
+let app="googlegmail://co?to="+correo;
+
+
+// Gmail Web respaldo
+
+let web="https://mail.google.com/mail/?view=cm&fs=1&to="+correo;
+
+
+// Intento aplicación
+
+window.location.href=app;
+
+
+// Respaldo
+
+setTimeout(function(){
+
+window.location.href=web;
+
+},1800);
+
+
+}
+
+
+
+// Detectar dispositivo
+
+window.onload=function(){
+
+
+let ua=navigator.userAgent.toLowerCase();
+
+
+let mensaje=document.getElementById("mensaje");
+
+let boton=document.getElementById("botonGmail");
+
+
+
+// iPhone / iPad
+
+if(ua.includes("iphone") || ua.includes("ipad")){
+
+
+mensaje.innerHTML="🍎 Detectamos iPhone<br><br>Presione el botón para abrir Gmail";
+
+boton.innerHTML="Abrir Gmail en iPhone";
+
+
+}
+
+
+// Android
+
+else if(ua.includes("android")){
+
+
+mensaje.innerHTML="📱 Detectamos Android<br><br>Presione el botón para abrir Gmail";
+
+boton.innerHTML="Abrir Gmail en Android";
+
+
+}
+
+
+// PC u otro dispositivo
+
+else{
+
+
+mensaje.innerHTML="💻 Abra Gmail desde el navegador";
+
+boton.innerHTML="Abrir Gmail Web";
+
+
+boton.onclick=function(){
+
+window.location.href="https://mail.google.com/mail/?view=cm&fs=1&to="+correo;
+
+};
+
+
+}
+
+
+
+};
+
+
+
+</script>
+
+
 </body>
+
 </html>
