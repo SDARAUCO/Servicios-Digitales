@@ -2,49 +2,109 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Servicio Digitales Duoc UC</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script>
-window.onload = function () {
-
-    var gmailApp =
-        "googlegmail://co?to=sd_carauco@duoc.cl";
-
-    var gmailWeb =
-        "https://mail.google.com/mail/?view=cm&fs=1&to=sd_carauco@duoc.cl";
-
-    window.location = gmailApp;
-
-    setTimeout(function () {
-        window.location = gmailWeb;
-    }, 1200);
-
-};
-</script>
+<title>Servicio Digitales - Duoc UC</title>
 
 <style>
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-font-family:Arial,Helvetica,sans-serif;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-background:#f5f5f5;
-margin:0;
+
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f2f4f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+
 }
 
 .card{
-background:white;
-padding:40px;
-border-radius:12px;
-box-shadow:0 0 20px rgba(0,0,0,.15);
-text-align:center;
+
+    width:360px;
+    background:white;
+    border-radius:18px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,.15);
+
 }
 
-h2{
-color:#006341;
+.logo{
+
+    font-size:28px;
+    font-weight:bold;
+    color:#006341;
+    margin-bottom:10px;
+
+}
+
+.sub{
+
+    color:#555;
+    margin-bottom:30px;
+
+}
+
+.spinner{
+
+    width:50px;
+    height:50px;
+    border:5px solid #ddd;
+    border-top:5px solid #006341;
+    border-radius:50%;
+    margin:auto;
+    animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+
+}
+
+p{
+
+margin-top:25px;
+color:#666;
+
+}
+
+button{
+
+margin-top:30px;
+padding:16px;
+width:100%;
+font-size:18px;
+font-weight:bold;
+border:none;
+border-radius:10px;
+background:#006341;
+color:white;
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#004f33;
+
+}
+
+small{
+
+display:block;
+margin-top:20px;
+color:#777;
+
 }
 
 </style>
@@ -54,9 +114,64 @@ color:#006341;
 <body>
 
 <div class="card">
-<h2>Servicio Digitales</h2>
-<p>Abriendo Gmail...</p>
+
+<div class="logo">
+Servicio Digitales
 </div>
+
+<div class="sub">
+Duoc UC
+</div>
+
+<div class="spinner"></div>
+
+<p>
+
+Intentando abrir Gmail...
+
+</p>
+
+<button onclick="abrirGmail()">
+
+Abrir Gmail
+
+</button>
+
+<small>
+
+Si Gmail no se abre automáticamente, presiona el botón.
+
+</small>
+
+</div>
+
+<script>
+
+const correo="sd_carauco@duoc.cl";
+
+const gmailApp="googlegmail://co?to="+correo;
+
+const gmailWeb="https://mail.google.com/mail/?view=cm&fs=1&to="+correo;
+
+function abrirGmail(){
+
+    window.location.href=gmailApp;
+
+    setTimeout(function(){
+
+        window.location.href=gmailWeb;
+
+    },1200);
+
+}
+
+window.onload=function(){
+
+    abrirGmail();
+
+};
+
+</script>
 
 </body>
 </html>
