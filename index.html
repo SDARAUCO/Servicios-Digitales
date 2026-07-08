@@ -1,48 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Servicio Digitales - Campus Arauco</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f2f4f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+
+}
+
+
+.card{
+
+    width:360px;
+    background:white;
+    border-radius:18px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,.15);
+
+}
+
+
+.logo{
+
+    font-size:28px;
+    font-weight:bold;
+    color:#006341;
+    margin-bottom:10px;
+
+}
+
+
+.sub{
+
+    color:#555;
+    margin-bottom:30px;
+
+}
+
+
+.spinner{
+
+    width:50px;
+    height:50px;
+    border:5px solid #ddd;
+    border-top:5px solid #006341;
+    border-radius:50%;
+    margin:auto;
+    animation:spin 1s linear infinite;
+
+}
+
+
+@keyframes spin{
+
+from{
+transform:rotate(0deg);
+}
+
+to{
+transform:rotate(360deg);
+}
+
+}
+
+
+p{
+
+margin-top:25px;
+color:#666;
+
+}
+
+
+button{
+
+margin-top:30px;
+padding:16px;
+width:100%;
+font-size:18px;
+font-weight:bold;
+border:none;
+border-radius:10px;
+background:#006341;
+color:white;
+cursor:pointer;
+
+}
+
+
+button:hover{
+
+background:#004f33;
+
+}
+
+
+small{
+
+display:block;
+margin-top:20px;
+color:#777;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="card">
+
+
+<div class="logo">
+
+Servicio Digitales
+
+</div>
+
+
+<div class="sub">
+
+Campus Arauco
+
+</div>
+
+
+<div class="spinner"></div>
+
+
+<p>
+
+Presione el botón para abrir Gmail
+
+</p>
+
+
 <button onclick="abrirGmail()">
+
 Abrir Gmail
+
 </button>
+
+
+<small>
+
+Correo destino:<br>
+
+sd_carauco@duoc.cl
+
+</small>
+
+
+</div>
+
 
 
 <script>
 
+
 function abrirGmail(){
+
 
 const correo="sd_carauco@duoc.cl";
 
-let ua = navigator.userAgent.toLowerCase();
+let ua=navigator.userAgent.toLowerCase();
 
 
-// iPhone
+
+// iPhone / iPad
 
 if(ua.includes("iphone") || ua.includes("ipad")){
 
-    window.location.href =
-    "googlegmail://co?to=" + correo;
 
-    return;
+window.location.href =
+"googlegmail://co?to=" + correo;
+
+
+return;
+
 
 }
+
+
 
 
 // Android
 
 if(ua.includes("android")){
 
-    window.location.href =
-    "googlegmail://co?to=" + correo;
+
+window.location.href =
+"googlegmail://co?to=" + correo;
 
 
-    setTimeout(function(){
 
-        window.location.href =
-        "https://mail.google.com/mail/?view=cm&fs=1&to=" + correo;
-
-    },1500);
+setTimeout(function(){
 
 
-    return;
+window.location.href =
+"https://mail.google.com/mail/?view=cm&fs=1&to=" + correo;
+
+
+
+},2000);
+
+
+
+return;
+
 
 }
+
+
 
 
 // PC
@@ -51,6 +248,13 @@ window.location.href =
 "https://mail.google.com/mail/?view=cm&fs=1&to=" + correo;
 
 
+
 }
 
+
 </script>
+
+
+</body>
+
+</html>
