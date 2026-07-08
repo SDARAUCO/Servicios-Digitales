@@ -1,177 +1,33 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Servicio Digitales - Duoc UC</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f2f4f7;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-
-}
-
-.card{
-
-    width:360px;
-    background:white;
-    border-radius:18px;
-    padding:35px;
-    text-align:center;
-    box-shadow:0 10px 35px rgba(0,0,0,.15);
-
-}
-
-.logo{
-
-    font-size:28px;
-    font-weight:bold;
-    color:#006341;
-    margin-bottom:10px;
-
-}
-
-.sub{
-
-    color:#555;
-    margin-bottom:30px;
-
-}
-
-.spinner{
-
-    width:50px;
-    height:50px;
-    border:5px solid #ddd;
-    border-top:5px solid #006341;
-    border-radius:50%;
-    margin:auto;
-    animation:spin 1s linear infinite;
-
-}
-
-@keyframes spin{
-
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
-
-}
-
-p{
-
-margin-top:25px;
-color:#666;
-
-}
-
-button{
-
-margin-top:30px;
-padding:16px;
-width:100%;
-font-size:18px;
-font-weight:bold;
-border:none;
-border-radius:10px;
-background:#006341;
-color:white;
-cursor:pointer;
-
-}
-
-button:hover{
-
-background:#004f33;
-
-}
-
-small{
-
-display:block;
-margin-top:20px;
-color:#777;
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="card">
-
-<div class="logo">
-Servicio Digitales
-</div>
-
-<div class="sub">
-Campus Arauco
-</div>
-
-<div class="spinner"></div>
-
-<p>
-
-Intentando abrir Gmail...
-
-</p>
-
-<button onclick="abrirGmail()">
-
-Abrir Gmail
-
-</button>
-
-<small>
-
-Si Gmail no se abre automáticamente, presiona el botón.
-
-</small>
-
-</div>
-
 <script>
+window.onload = function() {
 
-const correo="sd_carauco@duoc.cl";
+    const correo = "sd_carauco@duoc.cl";
 
-const gmailApp="googlegmail://co?to="+correo;
+    const esIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-const gmailWeb="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=cm&to=sd_carauco@duoc.cl";
+    if (esIOS) {
 
-function abrirGmail(){
+        // Abrir Gmail App en iPhone
+        window.location.href =
+        "googlegmail://co?to=" + correo;
 
-    window.location.href=gmailApp;
+        // Respaldo Gmail Web
+        setTimeout(function(){
 
-    setTimeout(function(){
+            window.location.href =
+            "https://mail.google.com/mail/?view=cm&fs=1&to="
+            + correo;
 
-        window.location.href=gmailWeb;
+        },1500);
 
-    },1200);
+    } else {
 
-}
+        // Android y PC
+        window.location.href =
+        "https://mail.google.com/mail/?view=cm&fs=1&to="
+        + correo;
 
-window.onload=function(){
-
-    abrirGmail();
+    }
 
 };
-
 </script>
-
-</body>
-</html>
